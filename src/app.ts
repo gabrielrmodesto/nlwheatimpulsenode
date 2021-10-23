@@ -19,4 +19,4 @@ app.get("/signin/callback", (request, response) => {
 	return response.json(code);
 });
 
-app.listen(4000, () => console.log("Rodando aqui"));
+app.listen(4000);
