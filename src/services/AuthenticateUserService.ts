@@ -56,8 +56,21 @@ class AuthenticateUserService {
 			});
 		}
 
-		const token = sign
-		return response.data;
+		const token = sign(
+			{
+				user: {
+					name: user.name,
+					avatar_ur: user.avatar_url,
+					id: user.id,
+				},
+			},
+			process.env.JWT_SECRET,
+			{
+				subject: user.id,
+				expiresIn: "1d",
+			}
+		);
+		return { token, user };
 	}
 }
 
